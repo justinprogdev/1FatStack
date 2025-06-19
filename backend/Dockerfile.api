@@ -1,0 +1,24 @@
+# Use the official Python 3.11 slim image as the base
+FROM python:3.11-slim
+
+# Set the working directory in the container to /app
+WORKDIR /app
+
+# Copy the entire backend directory contents into /app in the container
+COPY ./backend /app
+
+# Upgrade pip and install all necessary dependencies
+RUN pip install --upgrade pip \
+  # Install FastAPI with optional extras like pydantic, httpx, etc.
+  && pip install "fastapi[all]" \
+  # Uvicorn ASGI server for running FastAPI
+  uvicorn \
+  # PostgreSQL driver
+  psycopg2-binary \
+  # Qdrant client library for vector search
+  qdrant-client \
+  # Pretrained models and vector embedding support
+  sentence-transformers
+
+# Define the default command to run the FastAPI app with Uvicorn
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
