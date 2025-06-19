@@ -1,6 +1,10 @@
 # 1FatStack: Service Overview
 
-This document lists the major components of your stack, with accessible URLs and port mappings.
+#### This is merely a guide I followed to build 1FatStack   
+#### I recommend you go here and just run it <a href="https://github.com/justinprogdev/1FatStack/blob/main/RunBook.md">RunBook</a> 🤖
+
+
+
 
 ---
 
@@ -51,9 +55,9 @@ These services are networked internally under `1fatstack_default`, enabling reso
 ## 🐳 Docker Compose Commands
 
 Start/rebuild the stack:
-```bash
+```
 docker compose up --build
-
+```
 ---
 
 ## ✅ JD-Inspired Stack Plan (Refined)
