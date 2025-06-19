@@ -1,7 +1,9 @@
 from fastapi import FastAPI
 from services.embedding import EmbeddingService
+from prometheus_fastapi_instrumentator import Instrumentator
 
 app = FastAPI()
+Instrumentator().instrument(app).expose(app)
 es = EmbeddingService()
 
 @app.post("/index")

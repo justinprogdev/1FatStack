@@ -11,14 +11,16 @@ COPY ./backend /app
 RUN pip install --upgrade pip \
   # Install FastAPI with optional extras like pydantic, httpx, etc.
   && pip install "fastapi[all]" \
-  # Uvicorn ASGI server for running FastAPI
+  # Uvicorn ASGI server for running FastAPI \
   uvicorn \
-  # PostgreSQL driver
+  # PostgreSQL driver \
   psycopg2-binary \
-  # Qdrant client library for vector search
+  # Qdrant client library for vector search \
   qdrant-client \
-  # Pretrained models and vector embedding support
-  sentence-transformers
+  # Pretrained models and vector embedding support \
+  sentence-transformers \
+  # Observability instrumentation for Prometheus \
+  prometheus-fastapi-instrumentator
 
 # Define the default command to run the FastAPI app with Uvicorn
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
